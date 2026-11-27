@@ -3,4 +3,4 @@
 # 版本鎖定，升級由 Dependabot 開 PR（.github/dependabot.yml），測試通過再合併。
 cryptography==46.0.5
 requests==2.32.5
-urllib3==2.6.3
+urllib3==2.8.0
