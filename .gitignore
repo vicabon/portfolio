@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# 建置產物與暫存
+dist/
+_site/
+_private_data/
+index.html
+*.tmp
+
+# 個人私密資料（應存放於 vicabon/portfolio_private_data，絕不提交至公開倉儲）
+portfolio.json
+2025portfolio.json
+debt.json
+.env
+.env.*
+
+# 本機開發紀錄與環境設定
+CLAUDE.md
+PROMPT.md
+GEMINI.cmd
+RESUME.sh
+.claude/settings.local.json

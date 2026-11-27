@@ -1,0 +1,20 @@
+{"_comment": "由 tests/make_golden.py 產生，請勿手動修改（輸入皆為虛構資料）", "cases": [
+{"name":"台股頻道對照（只含台股）","js":"twseChannelMap","args":[["1111.TW"," 2222.two ","FAKE","CASH","3333.TW","   ","twd-cash"]],"expected":{"tse_1111.tw":"1111.TW","otc_2222.tw":"2222.TWO","tse_3333.tw":"3333.TW"}},
+{"name":"鉅亨網符號對照（排除現金）","js":"cnyesSymbolMap","args":[["1111.TW"," 2222.two ","FAKE","CASH","3333.TW","   ","twd-cash"],["TWD-CASH","CASH","TWD"]],"expected":{"TWS:1111:STOCK":"1111.TW","TWS:2222:STOCK":"2222.TWO","USS:FAKE:STOCK":"FAKE","TWS:3333:STOCK":"3333.TW"}},
+{"name":"isCash 'CASH'","js":"isCash","args":["CASH",["TWD-CASH","CASH","TWD"]],"expected":true},
+{"name":"isCash 'twd-cash'","js":"isCash","args":["twd-cash",["TWD-CASH","CASH","TWD"]],"expected":true},
+{"name":"isCash ' TWD '","js":"isCash","args":[" TWD ",["TWD-CASH","CASH","TWD"]],"expected":true},
+{"name":"isCash 'FAKE'","js":"isCash","args":["FAKE",["TWD-CASH","CASH","TWD"]],"expected":false},
+{"name":"isCash ''","js":"isCash","args":["",["TWD-CASH","CASH","TWD"]],"expected":false},
+{"name":"isCash None","js":"isCash","args":[null,["TWD-CASH","CASH","TWD"]],"expected":false},
+{"name":"isCash '1111.TW'","js":"isCash","args":["1111.TW",["TWD-CASH","CASH","TWD"]],"expected":false},
+{"name":"isTaiwanTicker '1111.TW'","js":"isTaiwanTicker","args":["1111.TW"],"expected":true},
+{"name":"isTaiwanTicker '2222.two'","js":"isTaiwanTicker","args":["2222.two"],"expected":true},
+{"name":"isTaiwanTicker 'FAKE'","js":"isTaiwanTicker","args":["FAKE"],"expected":false},
+{"name":"isTaiwanTicker 'TW'","js":"isTaiwanTicker","args":["TW"],"expected":false},
+{"name":"isTaiwanTicker '1111.TWX'","js":"isTaiwanTicker","args":["1111.TWX"],"expected":false},
+{"name":"isTaiwanTicker ' 3333.TW '","js":"isTaiwanTicker","args":[" 3333.TW "],"expected":true},
+{"name":"證交所列解析（跳過市價單 0.0000、未成交不拿昨收冒充）","js":"matchTwseRows","args":[[{"ex":"tse","ch":"1111.tw","z":"1050.0000","b":"1049.0000_1048.0000_","a":"1051.0000_","y":"1040.0000","tlong":"1795152600000","n":"測試一"},{"ex":"otc","ch":"2222.tw","z":"-","b":"0.0000_55.1000_55.0000_","a":"55.3000_","y":"54.0000","tlong":"1795152600000","n":"測試櫃買"},{"ex":"tse","ch":"3333.tw","z":"0.0000","b":"-","a":"0.0000_70.5000_","y":"70.0000","tlong":"","n":""},{"ex":"tse","ch":"4444.tw","z":"-","b":"-","a":"-","y":"12.3400","tlong":"1795152600000","n":"未成交"},{"ex":"tse","ch":"9999.tw","z":"10"},"not a dict",{"ch":"5555.tw","z":"1"}],{"tse_1111.tw":"1111.TW","otc_2222.tw":"2222.TWO","tse_3333.tw":"3333.TW","tse_4444.tw":"4444.TW"}],"expected":{"1111.TW":{"price":1050.0,"prevClose":1040.0,"asOf":1795152600,"name":"測試一"},"2222.TWO":{"price":55.1,"prevClose":54.0,"asOf":1795152600,"name":"測試櫃買"},"3333.TW":{"price":70.5,"prevClose":70.0,"asOf":null,"name":null},"4444.TW":{"price":null,"prevClose":12.34,"asOf":1795152600,"name":"未成交"}}},
+{"name":"證交所空回應","js":"matchTwseRows","args":[[],{"tse_1111.tw":"1111.TW","otc_2222.tw":"2222.TWO","tse_3333.tw":"3333.TW","tse_4444.tw":"4444.TW"}],"expected":{}},
+{"name":"鉅亨網列解析","js":"matchCnyesRows","args":[[{"0":"TWS:1111:STOCK","6":1050.0,"21":1040.0,"200007":1795208400,"200009":"測試一"},{"800013":"USS:FAKE:STOCK","6":"123.45","21":"120","200007":"1795208400","200009":"Fake Corp"},{"0":"USS:NOPE:STOCK","6":1},{"0":123,"6":1},{"0":"TWS:2222:STOCK","6":0,"21":null,"200007":null},null],{"TWS:1111:STOCK":"1111.TW","USS:FAKE:STOCK":"FAKE","TWS:2222:STOCK":"2222.TWO"}],"expected":{"1111.TW":{"price":1050.0,"prevClose":1040.0,"asOf":1795208400,"name":"測試一"},"FAKE":{"price":123.45,"prevClose":120.0,"asOf":1795208400,"name":"Fake Corp"},"2222.TWO":{"price":null,"prevClose":null,"asOf":null,"name":null}}}
+]}

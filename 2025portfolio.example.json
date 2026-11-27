@@ -1,0 +1,20 @@
+[
+  {
+    "ticker": "0050.TW",
+    "name": "元大台灣50",
+    "shares": 800,
+    "beta": 1.0
+  },
+  {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ Trust",
+    "shares": 8,
+    "beta": 1.2
+  },
+  {
+    "ticker": "TWD-CASH",
+    "name": "台幣現金",
+    "shares": 400000,
+    "beta": 0.0
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "_comment": "共用設定：Python（portfolio_data.py / app.py / build_static.py / validate_static.py）讀取此檔，並注入前端 window.APP_CONFIG；前端不再寫死這些常數。修改後 Flask 需重啟、靜態版需重新建置。",
+  "extraLohasTickers": ["0050.TW", "0052.TW", "006208.TW", "00631L.TW", "00685L.TW", "TQQQ"],
+  "cashTickers": ["TWD-CASH", "CASH", "TWD"],
+  "consensus": {
+    "_comment": "twoSourceMaxDiff：兩源差距在此比例內視為一致；staleGapSeconds：比最新報價舊超過此秒數的來源不投票。",
+    "twoSourceMaxDiff": 0.02,
+    "staleGapSeconds": 21600
+  },
+  "lohas": {
+    "_comment": "window：回歸樣本天數（交易日）；displayWindow：通道線延伸顯示的天數。875 個交易日約 3.5 年。",
+    "window": 875,
+    "displayWindow": 875,
+    "start": "2019-01-01"
+  },
+  "betaBuckets": {
+    "_comment": "Beta 分桶：現金或 Beta == cashBeta → 現金；Beta >= leveragedMin → 槓桿；其餘有填 Beta → 原型指數；未填 Beta → 未分類。",
+    "cashBeta": 0,
+    "leveragedMin": 2
+  },
+  "fx": {
+    "_comment": "USD/TWD：來源順序 Yahoo → Google Finance；超出 min–max 視為解析錯誤；兩源都失敗時以 fallbackRate 估算，頁面會標示「匯率暫缺」。",
+    "fallbackRate": 32.0,
+    "min": 20,
+    "max": 50
+  },
+  "forwardPe": {
+    "_comment": "Nasdaq 100 Forward P/E 合理範圍（超出視為解析錯誤）與過期天數。",
+    "min": 8,
+    "max": 60,
+    "staleDays": 7
+  },
+  "freshness": {
+    "_comment": "靜態快照距今多少分鐘後變黃（warn）/ 變紅（alert）。",
+    "warnMinutes": 90,
+    "alertMinutes": 360
+  },
+  "history": {
+    "start": "2020-11-01"
+  },
+  "validation": {
+    "_comment": "validate_static.py 部署前檢查門檻：總資產曲線單日變動、五線譜收盤單日變動、市場指標資料天數。",
+    "historyMaxJump": 0.15,
+    "lohasMaxJump": 0.45,
+    "indicatorMaxAgeDays": 4
+  }
+}

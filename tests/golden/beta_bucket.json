@@ -1,0 +1,14 @@
+{"_comment": "由 tests/make_golden.py 產生，請勿手動修改（輸入皆為虛構資料）", "cases": [
+{"name":"betaBucket (True, None, 2)","js":"betaBucket","args":[true,null,{"cashBeta":0,"leveragedMin":2}],"expected":"cash"},
+{"name":"betaBucket (True, 1.5, 2)","js":"betaBucket","args":[true,1.5,{"cashBeta":0,"leveragedMin":2}],"expected":"cash"},
+{"name":"betaBucket (False, None, 2)","js":"betaBucket","args":[false,null,{"cashBeta":0,"leveragedMin":2}],"expected":"unclassified"},
+{"name":"betaBucket (False, 0, 2)","js":"betaBucket","args":[false,0,{"cashBeta":0,"leveragedMin":2}],"expected":"cash"},
+{"name":"betaBucket (False, 0.0, 2)","js":"betaBucket","args":[false,0.0,{"cashBeta":0,"leveragedMin":2}],"expected":"cash"},
+{"name":"betaBucket (False, 1.0, 2)","js":"betaBucket","args":[false,1.0,{"cashBeta":0,"leveragedMin":2}],"expected":"index"},
+{"name":"betaBucket (False, 1.99, 2)","js":"betaBucket","args":[false,1.99,{"cashBeta":0,"leveragedMin":2}],"expected":"index"},
+{"name":"betaBucket (False, 2, 2)","js":"betaBucket","args":[false,2,{"cashBeta":0,"leveragedMin":2}],"expected":"leveraged"},
+{"name":"betaBucket (False, 3.0, 2)","js":"betaBucket","args":[false,3.0,{"cashBeta":0,"leveragedMin":2}],"expected":"leveraged"},
+{"name":"betaBucket (False, -0.5, 2)","js":"betaBucket","args":[false,-0.5,{"cashBeta":0,"leveragedMin":2}],"expected":"index"},
+{"name":"betaBucket (False, 1.6, 1.5)","js":"betaBucket","args":[false,1.6,{"cashBeta":0,"leveragedMin":1.5}],"expected":"leveraged"},
+{"name":"betaBucket (False, 1.4, 1.5)","js":"betaBucket","args":[false,1.4,{"cashBeta":0,"leveragedMin":1.5}],"expected":"index"}
+]}

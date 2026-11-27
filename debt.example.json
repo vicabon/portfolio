@@ -1,0 +1,10 @@
+[
+  {
+    "bank": "範例銀行",
+    "principal": 1000000,
+    "dueDay": 15,
+    "monthlyPayment": 15000,
+    "maturityDate": "2031-12-15",
+    "asOfDate": "2026-01-01"
+  }
+]

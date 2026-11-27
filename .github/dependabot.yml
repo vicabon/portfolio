@@ -1,0 +1,12 @@
+# 每週檢查一次相依套件與 GitHub Actions 的新版本，以 PR 形式提出（.github/workflows/test.yml 會先跑測試）。
+# actions 以 commit SHA 釘選，Dependabot 會一起更新 SHA 與後面註解的版本號。
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

@@ -1,0 +1,12 @@
+{"_comment": "由 tests/make_golden.py 產生，請勿手動修改（輸入皆為虛構資料）", "cases": [
+{"name":"一般情況","js":"parseFearGreed","args":[{"fear_and_greed":{"score":55.4321,"rating":"greed","timestamp":"2026-11-20T23:59:57+00:00","previous_close":50.06,"previous_1_week":41.25,"previous_1_month":60.0,"previous_1_year":33.35}}],"expected":{"score":55.4,"rating":"GREED","timestamp":"2026-11-20T23:59:57+00:00","previousClose":50.1,"previous1Week":41.2,"previous1Month":60.0,"previous1Year":33.4,"error":null}},
+{"name":"分數為字串","js":"parseFearGreed","args":[{"fear_and_greed":{"score":"12.25","rating":"Extreme Fear"}}],"expected":{"score":12.2,"rating":"EXTREME FEAR","timestamp":null,"previousClose":null,"previous1Week":null,"previous1Month":null,"previous1Year":null,"error":null}},
+{"name":"分數 0 有效","js":"parseFearGreed","args":[{"fear_and_greed":{"score":0,"rating":""}}],"expected":{"score":0.0,"rating":null,"timestamp":null,"previousClose":null,"previous1Week":null,"previous1Month":null,"previous1Year":null,"error":null}},
+{"name":"分數 100 有效","js":"parseFearGreed","args":[{"fear_and_greed":{"score":100}}],"expected":{"score":100.0,"rating":null,"timestamp":null,"previousClose":null,"previous1Week":null,"previous1Month":null,"previous1Year":null,"error":null}},
+{"name":"分數超過 100","js":"parseFearGreed","args":[{"fear_and_greed":{"score":100.04}}],"throws":true},
+{"name":"分數為負","js":"parseFearGreed","args":[{"fear_and_greed":{"score":-1}}],"throws":true},
+{"name":"缺分數","js":"parseFearGreed","args":[{"fear_and_greed":{"rating":"fear"}}],"throws":true},
+{"name":"缺 fear_and_greed","js":"parseFearGreed","args":[{"other":1}],"throws":true},
+{"name":"payload 為 null","js":"parseFearGreed","args":[null],"throws":true},
+{"name":"歷史值缺漏或為破折號","js":"parseFearGreed","args":[{"fear_and_greed":{"score":45.0,"previous_close":"-","previous_1_week":null}}],"expected":{"score":45.0,"rating":null,"timestamp":null,"previousClose":null,"previous1Week":null,"previous1Month":null,"previous1Year":null,"error":null}}
+]}
