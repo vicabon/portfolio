@@ -2,5 +2,5 @@
 # app.py 沒裝 Flask 也能 import（見 app.py 的 _DummyApp）。
 # 版本鎖定，升級由 Dependabot 開 PR（.github/dependabot.yml），測試通過再合併。
 cryptography==46.0.5
-requests==2.32.5
+requests==2.34.2
 urllib3==2.6.3
