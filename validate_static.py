@@ -30,6 +30,7 @@ import argparse
 import json
 import math
 import os
+import re
 import sys
 
 import crypto_static
@@ -46,7 +47,7 @@ class ValidationError(Exception):
 def _extract_json_prefix(html, prefix, label):
     count = html.count(prefix)
     if count != 1:
-        raise ValidationError(prefix + " 應恰好出現 1 次，實際 " + str(count) + " 次")
+        raise ValidationError(prefix.rstrip("=") + " 應恰好出現 1 次，實際 " + str(count) + " 次")
 
     def reject_constant(name):
         raise ValidationError(label + " 含有 " + name)
@@ -297,7 +298,12 @@ def check_no_plaintext_leaks(html, data_dir):
     template = _template_text()
 
     def leaked_number(value):
-        return any(tok in scanned and tok not in template for tok in _numeric_leak_tokens(value))
+        for tok in _numeric_leak_tokens(value):
+            if tok in template:
+                continue
+            if re.search(r"(?<!\d)" + re.escape(tok) + r"(?!\d)", scanned):
+                return True
+        return False
 
     debt_path = os.path.join(data_dir, "debt.json")
     if os.path.exists(debt_path):

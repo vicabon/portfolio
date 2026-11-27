@@ -36,7 +36,7 @@ def _sample_private_dir(tmp_path):
             "bank": "測試機密銀行",
             "principal": 3456789,
             "dueDay": 15,
-            "monthlyPayment": 45678,
+            "monthlyPayment": 61234,
             "maturityDate": "2031-06-15",
             "asOfDate": "2026-01-01",
         }
@@ -112,7 +112,7 @@ def test_encrypt_html_and_encrypted_validation_gate(tmp_path, monkeypatch, capsy
     assert "window.STATIC_DATA=" not in enc_html
     assert enc_html.count("window.ENCRYPTED_DATA=") == 1
     assert enc_html.count("window.APP_CONFIG=") == 1
-    for secret in ("測試機密銀行", "3456789", "3,456,789", "45678", "887766", "5432100", TEST_PASS):
+    for secret in ("測試機密銀行", "3456789", "3,456,789", "61234", "887766", "5432100", TEST_PASS):
         assert secret not in enc_html
 
     # 確認沒有任何 log 洩漏密碼或機密值
